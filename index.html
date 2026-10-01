@@ -83,6 +83,25 @@
   <!-- Critical CSS - Load synchronously -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
+  <style>
+    .publication-affiliations {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+    .publication-venue {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .publication-affiliations { font-size: 0.85rem; }
+      .publication-venue { font-size: 1rem; }
+    }
+  </style>
   
   <!-- Non-critical CSS - Load asynchronously -->
   <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -222,20 +241,24 @@
             <!-- TODO: Replace with your paper title -->
             <h1 class="title is-1 publication-title">SAGE: A Strategy-Aware Graph-Enhanced Generation Framework For Online Counseling</h1>
             <div class="is-size-5 publication-authors">
-              <span class="author-block">Eliya Naomi Aharon<sup>1</sup>,</span>
+              <span class="author-block"><a href="https://www.linkedin.com/in/eliya-aharon-b3b032369" target="_blank" rel="noopener">Eliya Naomi Aharon</a><sup>1</sup>,</span>
               <span class="author-block">Meytal Grimland<sup>2</sup>,</span>
               <span class="author-block">Avi Segal<sup>1</sup>,</span>
               <span class="author-block">Loona Ben Dayan<sup>3</sup>,</span>
               <span class="author-block">Inbar Shenfeld<sup>3</sup>,</span>
               <span class="author-block">Yossi Levi Belz<sup>2</sup>,</span>
-              <span class="author-block">Kobi Gal<sup>1</sup></span>
+              <span class="author-block">Kobi Gal<sup>1,4</sup></span>
             </div>
 
-            <div class="is-size-5 publication-authors">
+            <div class="publication-affiliations">
               <span class="author-block"><sup>1</sup>Ben-Gurion University of the Negev</span>
               <span class="author-block"><sup>2</sup>University of Haifa</span>
               <span class="author-block"><sup>3</sup>Sahar</span>
-              <span class="eql-cntrb"><small><br>UMAP '26 &middot; 34th ACM Conference on User Modeling, Adaptation and Personalization &middot; Gothenburg, Sweden</small></span>
+              <span class="author-block"><sup>4</sup>University of Edinburgh, Edinburgh</span>
+            </div>
+
+            <div class="publication-venue">
+              UMAP '26 &middot; 34th ACM Conference on User Modeling, Adaptation and Personalization &middot; Gothenburg, Sweden
             </div>
 
                   <div class="column has-text-centered">
