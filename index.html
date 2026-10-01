@@ -181,6 +181,206 @@
       .sg-venue__full { font-size: 0.98rem; }
       .sg-btn { flex: 1 1 auto; justify-content: center; }
     }
+
+    /* ---- page sections ---- */
+    body { background: #FCFCFA; }
+    .sg-sec, .sg-footer {
+      --sg-paper: #FCFCFA; --sg-tint: #F3F6F4; --sg-ink: #18211E; --sg-sage: #2F5446;
+      --sg-sage-dark: #23413A; --sg-sage-pale: #E4ECE7; --sg-muted: #5E6A65; --sg-rule: #D3DBD6;
+      --sg-c-sage: #2E8A64; --sg-c-base: #8A68B0; --sg-c-tie: #D5DBD7;
+      font-family: 'Instrument Sans', system-ui, sans-serif;
+      color: var(--sg-ink);
+    }
+    .sg-sec { padding: 4.5rem 1.5rem; border-bottom: 1px solid var(--sg-rule); background: var(--sg-paper); }
+    .sg-sec--tint { background: var(--sg-tint); }
+    .sg-wrap { max-width: 56rem; margin: 0 auto; }
+    .sg-prose > * { max-width: 42rem; }
+    .sg-sec p { font-size: 1.0625rem; line-height: 1.65; margin: 0 0 1rem; }
+    .sg-h2 {
+      font-family: 'Newsreader', Georgia, serif; font-weight: 500;
+      font-size: clamp(1.75rem, 3.4vw, 2.35rem); line-height: 1.15; letter-spacing: -0.01em;
+      color: var(--sg-ink); margin: 0 0 1.25rem;
+    }
+    .sg-h3 { font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 1.5rem; line-height: 1.2; margin: 0 0 0.75rem; color: var(--sg-ink); }
+    .sg-h4 { font-size: 1rem; font-weight: 600; margin: 0 0 0.4rem; color: var(--sg-ink); }
+    .sg-lede { max-width: 42rem; color: var(--sg-ink); }
+    .sg-sec strong { font-weight: 600; color: inherit; }
+
+    .sg-hyp, .sg-contrib { list-style: none; padding: 0; margin: 1.25rem 0 0; }
+    .sg-contrib li { font-size: 1.0625rem; line-height: 1.6; margin-bottom: 1.25rem; }
+    .sg-hyp li {
+      font-size: 1.0625rem; line-height: 1.6; padding: 0.9rem 0 0.9rem 1.1rem;
+      border-left: 2px solid var(--sg-sage); margin-bottom: 0.75rem;
+    }
+    .sg-contrib li strong { display: block; margin-bottom: 0.2rem; }
+
+    /* walkthrough */
+    .sg-walk { margin-top: 2rem; }
+    .sg-steps { counter-reset: step; display: flex; gap: 0.25rem; list-style: none; margin: 0 0 1.5rem; padding: 0; border-bottom: 1px solid var(--sg-rule); overflow-x: auto; }
+    .sg-steps li { counter-increment: step; flex: 0 0 auto; }
+    .sg-steps button {
+      font: inherit; font-size: 0.95rem; color: var(--sg-muted); background: none; border: 0;
+      padding: 0.7rem 0.9rem 0.8rem; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px;
+    }
+    .sg-steps button::before { content: counter(step) ". "; color: var(--sg-muted); }
+    .sg-steps li.is-done button { color: var(--sg-ink); }
+    .sg-steps button[aria-selected="true"] { color: var(--sg-sage); border-bottom-color: var(--sg-sage); font-weight: 600; }
+    .sg-steps button:hover { color: var(--sg-ink); }
+    .sg-steps button:focus-visible, .sg-walk__text:focus-visible, .sg-row:focus-visible, .sg-table summary:focus-visible {
+      outline: 2px solid var(--sg-sage); outline-offset: 2px;
+    }
+    .sg-walk__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.5rem; align-items: start; }
+
+    .sg-session { background: #fff; border: 1px solid var(--sg-rule); border-radius: 10px; padding: 1.25rem; }
+    .sg-session__who { font-size: 0.85rem !important; color: var(--sg-muted); margin: 0 0 1rem !important; padding-bottom: 0.75rem; border-bottom: 1px solid var(--sg-rule); }
+    .sg-msg { max-width: 85%; padding: 0.6rem 0.85rem; border-radius: 10px; font-size: 0.98rem; line-height: 1.45; margin-bottom: 0.75rem; }
+    .sg-msg__by { display: block; font-size: 0.75rem; color: var(--sg-muted); margin-bottom: 0.15rem; }
+    .sg-msg--counselor { background: var(--sg-tint); }
+    .sg-msg--seeker { background: var(--sg-sage-pale); margin-left: auto; }
+    .sg-hl { background: transparent; color: inherit; padding: 0 0.1em; border-radius: 3px; transition: background-color 0.25s ease, box-shadow 0.25s ease; }
+    .show-hl .sg-hl { background: #fff; box-shadow: inset 0 -2px 0 var(--sg-sage); font-weight: 600; }
+
+    .sg-state { margin: 1.25rem 0 0; padding-top: 1rem; border-top: 1px solid var(--sg-rule); }
+    .sg-state > div { display: grid; grid-template-columns: 8.5rem 1fr; gap: 0.75rem; padding: 0.45rem 0; align-items: baseline; }
+    .sg-state dt { font-size: 0.85rem; color: var(--sg-muted); }
+    .sg-state dd { margin: 0; font-size: 0.95rem; transition: opacity 0.25s ease; }
+    .sg-state > div:not(.is-on) dd { opacity: 0; visibility: hidden; }
+    .sg-state > div:not(.is-on) dt { color: #9AA39F; }
+    .sg-tag { display: inline-block; padding: 0.1rem 0.55rem; border: 1px solid var(--sg-sage); border-radius: 4px; color: var(--sg-sage); font-size: 0.88rem; }
+    .sg-tag--solid { background: var(--sg-sage); color: #fff; }
+    .sg-state code { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.82rem; background: var(--sg-tint); color: var(--sg-ink); padding: 0.1rem 0.35rem; border-radius: 3px; }
+    .sg-reply { font-family: 'Newsreader', Georgia, serif; font-size: 1.12rem !important; line-height: 1.4; }
+
+    .sg-panel__count { font-size: 0.85rem !important; color: var(--sg-muted); margin: 0 0 0.35rem !important; }
+    .sg-note { font-size: 0.92rem !important; color: var(--sg-muted); }
+    .sg-lex { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0.5rem 0 1rem; }
+    .sg-lex > div { border-top: 2px solid var(--sg-rule); padding-top: 0.5rem; }
+    .sg-lex > div:first-child { border-top-color: var(--sg-sage); }
+    .sg-lex p { font-size: 0.95rem !important; margin: 0 !important; }
+    .sg-lex .sg-lex__cat { font-weight: 600; margin-bottom: 0.3rem !important; }
+    .sg-strat { list-style: none; padding: 0; margin: 0.5rem 0 1rem; }
+    .sg-strat li { padding: 0.6rem 0.8rem; border: 1px solid var(--sg-rule); border-radius: 6px; margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--sg-muted); }
+    .sg-strat li strong { display: block; color: var(--sg-ink); }
+    .sg-strat li.is-picked { border-color: var(--sg-sage); background: var(--sg-sage-pale); color: var(--sg-ink); }
+    .sg-walk__nav { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+    .sg-btn:disabled { opacity: 0.4; cursor: not-allowed; background: transparent; }
+    .sg-sec .sg-btn { font-family: 'Instrument Sans', system-ui, sans-serif; cursor: pointer; }
+
+    /* graph figure */
+    .sg-fig { margin: 2rem 0 0; }
+    .sg-fig__scroll { overflow-x: auto; background: #fff; border: 1px solid var(--sg-rule); border-radius: 10px; padding: 1rem; }
+    .sg-graph { display: block; width: 100%; min-width: 620px; height: auto; font-family: 'Instrument Sans', system-ui, sans-serif; }
+    .g-band { fill: var(--sg-tint); stroke: var(--sg-rule); }
+    .g-layer { font-size: 14px; font-weight: 600; fill: var(--sg-ink); }
+    .g-label { font-size: 13px; fill: var(--sg-ink); text-anchor: middle; }
+    .g-label--inv { fill: #fff; font-weight: 600; }
+    .g-small { font-size: 11.5px; fill: var(--sg-muted); text-anchor: middle; }
+    .g-edge line { stroke: var(--sg-muted); stroke-width: 1.4; }
+    .g-edge--time line { stroke: var(--sg-ink); stroke-width: 1.8; }
+    .g-arrowhead { fill: var(--sg-ink); }
+    .g-edge--hier line { stroke: var(--sg-muted); stroke-dasharray: 4 4; stroke-width: 1; }
+    .g-edge--lex line { stroke: var(--sg-sage); stroke-width: 1.6; }
+    .g-edge--dist { stroke-dasharray: 2 3; }
+    .g-node--session { fill: var(--sg-ink); }
+    .g-node--attr { fill: #fff; stroke: var(--sg-rule); stroke-width: 1.2; }
+    .g-node--seeker { fill: var(--sg-sage); stroke: #fff; stroke-width: 2; }
+    .g-node--counselor { fill: #fff; stroke: var(--sg-ink); stroke-width: 1.6; }
+    .g-node--cat { fill: var(--sg-sage-pale); stroke: var(--sg-sage); stroke-width: 1.2; }
+    .sg-fig figcaption { margin-top: 0.9rem; }
+    .sg-fig figcaption p { font-size: 0.92rem !important; color: var(--sg-muted); margin: 0.5rem 0 0 !important; }
+    .sg-key { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: var(--sg-ink); }
+    .sg-key li { display: flex; align-items: center; gap: 0.45rem; }
+    .k { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+    .k--seeker { background: var(--sg-sage); }
+    .k--counselor { border: 1.6px solid var(--sg-ink); background: #fff; }
+    .k-line { width: 22px; height: 0; border-top: 2px solid var(--sg-ink); display: inline-block; }
+    .k-line--dash { border-top: 1.5px dashed var(--sg-muted); }
+    .k-line--lex { border-top-color: var(--sg-sage); }
+    .sg-layers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .sg-layers p { font-size: 0.98rem !important; color: var(--sg-muted); margin: 0 !important; }
+
+    /* chart */
+    .sg-chart { position: relative; margin: 2rem 0 1.5rem; background: #fff; border: 1px solid var(--sg-rule); border-radius: 10px; padding: 1.5rem; }
+    .sg-chart__legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; list-style: none; padding: 0; margin: 0 0 1.25rem; font-size: 0.9rem; }
+    .sg-chart__legend li { display: flex; align-items: center; gap: 0.45rem; }
+    .sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; flex: 0 0 auto; }
+    .sw--sage { background: var(--sg-c-sage); }
+    .sw--tie { background: var(--sg-c-tie); }
+    .sw--base { background: var(--sg-c-base); }
+    .sg-chart__rows { display: grid; gap: 0.55rem; }
+    .sg-row { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; align-items: center; padding: 0.2rem 0; border-radius: 4px; }
+    .sg-row--all { padding-bottom: 0.8rem; margin-bottom: 0.4rem; border-bottom: 1px solid var(--sg-rule); }
+    .sg-row--all .sg-row__label { font-weight: 600; color: var(--sg-ink); }
+    .sg-row__label { font-size: 0.9rem; color: var(--sg-muted); font-variant-numeric: tabular-nums; }
+    .sg-bar { display: flex; gap: 2px; height: 24px; }
+    .seg { display: flex; align-items: center; min-width: 0; }
+    .seg:first-child { border-radius: 4px 0 0 4px; }
+    .seg:last-child { border-radius: 0 4px 4px 0; justify-content: flex-end; }
+    .seg--sage { background: var(--sg-c-sage); }
+    .seg--tie { background: var(--sg-c-tie); }
+    .seg--base { background: var(--sg-c-base); }
+    .seg b { color: #fff; font-size: 0.8rem; font-weight: 600; padding: 0 0.5rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .sg-row:hover .sg-bar, .sg-row:focus-visible .sg-bar { filter: brightness(0.95); }
+    .sg-chart__axis { display: flex; justify-content: space-between; margin: 0.6rem 0 0 8.5rem; font-size: 0.8rem; color: var(--sg-muted); }
+    .sg-chart figcaption { font-size: 0.9rem; color: var(--sg-muted); margin-top: 1rem; }
+    .sg-tip {
+      position: absolute; z-index: 5; pointer-events: none; min-width: 13rem;
+      background: #fff; border: 1px solid var(--sg-rule); border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(24, 33, 30, 0.12); padding: 0.65rem 0.8rem; font-size: 0.85rem;
+    }
+    .sg-tip strong { display: block; margin-bottom: 0.35rem; }
+    .sg-tip span { display: flex; align-items: center; gap: 0.45rem; line-height: 1.6; }
+    .sg-tip em { margin-left: auto; font-style: normal; font-weight: 600; padding-left: 1rem; font-variant-numeric: tabular-nums; }
+    .sg-table { margin-top: 1rem; font-size: 0.9rem; }
+    .sg-table summary { cursor: pointer; color: var(--sg-sage); }
+    .sg-table table { width: 100%; border-collapse: collapse; margin-top: 0.75rem; font-variant-numeric: tabular-nums; }
+    .sg-table th, .sg-table td { text-align: right; padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--sg-rule); font-size: 0.88rem; color: var(--sg-ink); }
+    .sg-table th:first-child { text-align: left; font-weight: 500; }
+    .sg-table thead th { font-weight: 600; }
+    .sg-small-print { font-size: 0.95rem !important; color: var(--sg-muted); max-width: 42rem; }
+
+    /* use case */
+    .sg-quote { margin: 1.25rem 0 2rem; padding: 0 0 0 1.25rem; border-left: 2px solid var(--sg-rule); font-family: 'Newsreader', Georgia, serif; font-size: 1.3rem; line-height: 1.45; color: var(--sg-ink); background: none; }
+    .sg-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .sg-compare__col { border: 1px solid var(--sg-rule); border-radius: 10px; padding: 1.25rem; background: #fff; }
+    .sg-compare__col--sage { border-color: var(--sg-sage); box-shadow: inset 3px 0 0 var(--sg-sage); }
+    .sg-compare__reply { font-family: 'Newsreader', Georgia, serif; font-size: 1.15rem !important; line-height: 1.45 !important; }
+    .sg-compare__why { font-size: 0.95rem !important; color: var(--sg-muted); margin: 0 !important; padding-top: 0.75rem; border-top: 1px solid var(--sg-rule); }
+
+    /* citation */
+    .sg-cite__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+    .sg-cite__head .sg-h2 { margin: 0; }
+    .sg-sec .copy-bibtex-btn { all: unset; box-sizing: border-box; display: inline-flex; align-items: center; gap: 0.5rem; height: 2.5rem; padding: 0 1rem; border: 1px solid var(--sg-ink); border-radius: 6px; font-family: 'Instrument Sans', system-ui, sans-serif; font-size: 0.95rem; font-weight: 500; color: var(--sg-ink); cursor: pointer; }
+    .sg-sec .copy-bibtex-btn:hover { background: var(--sg-sage-pale); }
+    .sg-sec .copy-bibtex-btn:focus-visible { outline: 2px solid var(--sg-sage); outline-offset: 3px; }
+    .sg-sec .copy-bibtex-btn.copied { background: var(--sg-sage); border-color: var(--sg-sage); color: #fff; }
+    .sg-sec .sg-bib { white-space: pre-wrap; word-break: break-word; background: #fff !important; border: 1px solid var(--sg-rule) !important; border-radius: 10px !important; padding: 1.25rem !important; overflow-x: auto; margin: 0; }
+    .sg-sec .sg-bib code { background: none !important; font-family: 'IBM Plex Mono', ui-monospace, monospace !important; font-size: 0.85rem; line-height: 1.6; color: var(--sg-ink) !important; padding: 0 !important; }
+
+    .sg-footer { padding: 2rem 1.5rem 3rem; background: var(--sg-paper); }
+    .sg-footer p { font-size: 0.88rem; color: var(--sg-muted); margin: 0; }
+    .sg-footer a, .sg-sec a:not(.sg-btn) { color: var(--sg-sage); text-decoration: underline; text-underline-offset: 0.2em; }
+
+    .sg-only-mobile { display: none; }
+    .scroll-to-top { background: #2F5446 !important; box-shadow: none !important; }
+    .scroll-to-top:hover { background: #23413A !important; }
+    @media (max-width: 768px) {
+      .sg-only-mobile { display: block; }
+      .sg-state > div:not(.is-on) { display: none; }
+      .sg-sec { padding: 3rem 1rem; }
+      .sg-walk__grid, .sg-compare, .sg-layers { grid-template-columns: 1fr; gap: 1.25rem; }
+      .sg-lex { grid-template-columns: 1fr; }
+      .sg-state > div { grid-template-columns: 7rem 1fr; }
+      .sg-row { grid-template-columns: 4.5rem 1fr; gap: 0.6rem; }
+      .sg-chart { padding: 1rem; }
+      .sg-chart__axis { margin-left: 5.1rem; }
+      .seg b { font-size: 0.72rem; padding: 0 0.3rem; }
+      .sg-quote { font-size: 1.15rem; }
+      .sg-walk__nav .sg-btn { flex: 1 1 auto; justify-content: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sg-hl, .sg-state dd { transition: none; }
+    }
     @media (prefers-reduced-motion: reduce) { .sg-btn { transition: none; } }
   </style>
   
@@ -199,7 +399,7 @@
   </noscript>
   
   <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
   
   <!-- Defer non-critical JavaScript -->
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -359,96 +559,289 @@
   </header>
 
 
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
+  <!-- ===== Abstract ===== -->
+  <section class="sg-sec" id="abstract" aria-labelledby="h-abstract">
+    <div class="sg-wrap sg-prose">
+      <h2 class="sg-h2" id="h-abstract">Abstract</h2>
+      <p>Effective online mental health counseling is a complex, theory-driven process requiring the simultaneous integration of psychological frameworks, real-time distress signals, and strategic intervention planning. This level of clinical reasoning is critical for safety and therapeutic effectiveness but is often missing in general-purpose Large Language Models.</p>
+      <p>We introduce SAGE, a novel framework designed to bridge the gap between structured clinical knowledge and generative AI. SAGE constructs a heterogeneous graph that unifies conversational dynamics with a psychologically grounded layer, explicitly anchoring interactions in a theory-driven lexicon. Our architecture first employs a Next Strategy Classifier to identify the optimal therapeutic intervention. Subsequently, a Graph-Aware Attention mechanism projects graph-derived structural signals into soft prompts, conditioning the LLM to generate responses that maintain clinical depth. Validated through both automated metrics and expert human evaluation, SAGE outperforms baselines in strategy prediction and recommended response quality. By providing actionable intervention recommendations, SAGE serves as a cutting-edge decision-support tool designed to augment human expertise in high-stakes online crisis counseling.</p>
     </div>
-  </div>
-</section>
-<!-- End teaser video -->
+  </section>
 
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
-          <p>
-            Effective online mental health counseling is a complex, theory-driven process requiring the simultaneous integration of psychological frameworks, real-time distress signals, and strategic intervention planning. This level of clinical reasoning is critical for safety and therapeutic effectiveness but is often missing in general-purpose Large Language Models.<br> We introduce SAGE, a novel framework designed to bridge the gap between structured clinical knowledge and generative AI. SAGE constructs a heterogeneous graph that unifies conversational dynamics with a psychologically grounded layer, explicitly anchoring interactions in a theory-driven lexicon. Our architecture first employs a Next Strategy Classifier to identify the optimal therapeutic intervention. Subsequently, a Graph-Aware Attention mechanism projects graph-derived structural signals into soft prompts, conditioning the LLM to generate responses that maintain clinical depth. Validated through both automated metrics and expert human evaluation, SAGE outperforms baselines in strategy prediction and recommended response quality. By providing actionable intervention recommendations, SAGE serves as a cutting-edge decision-support tool designed to augment human expertise in high-stakes online crisis counseling.
-          </p>
+  <!-- ===== Problem ===== -->
+  <section class="sg-sec" id="problem" aria-labelledby="h-problem">
+    <div class="sg-wrap sg-prose">
+      <h2 class="sg-h2" id="h-problem">Why counselors need more than a fluent reply</h2>
+      <p>On a crisis hotline, a counselor often handles several chats at once. Risk signals arrive in fragments, and a help-seeker&rsquo;s emotional state can shift within a few messages. To respond well, the counselor has to keep track of the conversation, notice subtle signs of risk, and choose the right clinical strategy, all under heavy cognitive load.</p>
+      <p>General-purpose LLMs can write fluent, empathic text, but they lack the clinical reasoning and psychological grounding this work needs. SAGE is built as decision support for the counselor, around two hypotheses:</p>
+      <ul class="sg-hyp">
+        <li>Modeling the counselor&rsquo;s decisions requires <strong>multi-layered clinical context</strong>: the session, the dialogue, and the psychological risk factors behind it.</li>
+        <li>An explicit <strong>intermediate clinical inference step</strong>, deciding which strategy to use before writing, makes the generated reply more clinically grounded.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Walkthrough ===== -->
+  <section class="sg-sec sg-sec--tint" id="walkthrough" aria-labelledby="h-walk">
+    <div class="sg-wrap">
+      <h2 class="sg-h2" id="h-walk">Following one message through SAGE</h2>
+      <p class="sg-lede">A single help-seeker message, traced from the moment it arrives to the reply SAGE suggests to the counselor.</p>
+
+      <div class="sg-walk" id="sgWalk">
+        <ol class="sg-steps" role="tablist" aria-label="Pipeline steps">
+          <li><button role="tab" id="wt-0" aria-controls="wp" aria-selected="true">Message</button></li>
+          <li><button role="tab" id="wt-1" aria-controls="wp" aria-selected="false" tabindex="-1">Lexicon</button></li>
+          <li><button role="tab" id="wt-2" aria-controls="wp" aria-selected="false" tabindex="-1">Strategy</button></li>
+          <li><button role="tab" id="wt-3" aria-controls="wp" aria-selected="false" tabindex="-1">Graph signals</button></li>
+          <li><button role="tab" id="wt-4" aria-controls="wp" aria-selected="false" tabindex="-1">Reply</button></li>
+        </ol>
+
+        <div class="sg-walk__grid">
+          <div class="sg-session" aria-label="Example session">
+            <p class="sg-session__who">Anonymized help-seeker, female, 35&ndash;40</p>
+            <div class="sg-msg sg-msg--counselor"><span class="sg-msg__by">Counselor</span>Hello, how are things going today?</div>
+            <div class="sg-msg sg-msg--seeker"><span class="sg-msg__by">Help-seeker</span>it&rsquo;s been very hard lately&hellip; <mark class="sg-hl">I feel so alone</mark></div>
+
+            <dl class="sg-state">
+              <div data-from="1"><dt>Lexicon category</dt><dd><span class="sg-tag">Loneliness</span></dd></div>
+              <div data-from="2"><dt>Next strategy</dt><dd><span class="sg-tag sg-tag--solid">Reflection</span></dd></div>
+              <div data-from="3"><dt>Graph signals</dt><dd><code>[Loneliness_signal]</code> <code>[Escalation_trend]</code></dd></div>
+              <div data-from="4"><dt>Suggested reply</dt><dd class="sg-reply">&ldquo;It sounds like you&rsquo;ve been carrying a heavy burden of loneliness.&rdquo;</dd></div>
+            </dl>
+          </div>
+
+          <div class="sg-walk__text" id="wp" role="tabpanel" aria-live="polite" tabindex="0">
+            <div class="sg-panel" data-step="0">
+              <p class="sg-panel__count">Step 1 of 5</p>
+              <h3 class="sg-h3">A help-seeker writes</h3>
+              <p>The session arrives with basic metadata such as age and gender. SAGE works at <em>intervention points</em>: the last help-seeker message before the counselor applies a therapeutic strategy.</p>
+              <p>A clinical psychologist annotated 2,258 intervention points across 150 real sessions from Sahar&rsquo;s national crisis hotline.</p>
+            </div>
+            <div class="sg-panel" data-step="1" hidden>
+              <p class="sg-panel__count">Step 2 of 5</p>
+              <h3 class="sg-h3">The lexicon names the risk factor</h3>
+              <p>Help-seeker messages are matched against the Suicide-Risk Factors lexicon: over 4,000 phrases in 20 categories, grounded in PHQ-9, the Columbia Suicide Severity Rating Scale and the Interpersonal Needs Questionnaire.</p>
+              <div class="sg-lex">
+                <div><p class="sg-lex__cat">Loneliness</p><p>&ldquo;Nobody understands me&rdquo;<br>&ldquo;No one cares about me&rdquo;<br><strong>&ldquo;I feel so alone&rdquo;</strong></p></div>
+                <div><p class="sg-lex__cat">Hopelessness</p><p>&ldquo;Nothing will get better&rdquo;<br>&ldquo;There is no way out&rdquo;</p></div>
+              </div>
+            </div>
+            <div class="sg-panel" data-step="2" hidden>
+              <p class="sg-panel__count">Step 3 of 5</p>
+              <h3 class="sg-h3">Choose the next strategy</h3>
+              <p>The Next Strategy Classifier, a Heterogeneous Graph Transformer over the session graph, predicts which of three strategies the counselor should use next.</p>
+              <ul class="sg-strat">
+                <li class="is-picked"><strong>Reflection</strong>Empathic validation and mirroring of emotional content</li>
+                <li><strong>Exploration</strong>Inviting the help-seeker to say more, including safety assessment</li>
+                <li><strong>Suggestion</strong>Actionable coping strategies and recommendations</li>
+              </ul>
+            </div>
+            <div class="sg-panel" data-step="3" hidden>
+              <p class="sg-panel__count">Step 4 of 5</p>
+              <h3 class="sg-h3">Turn graph signals into soft prompts</h3>
+              <p>Graph-Aware Attention uses the current message to attend over the structural and psychological signals in the graph, and projects them into 8 virtual tokens that condition the language model.</p>
+              <p class="sg-note">The token names here are illustrative. The real tokens are learned vectors, not words.</p>
+            </div>
+            <div class="sg-panel" data-step="4" hidden>
+              <p class="sg-panel__count">Step 5 of 5</p>
+              <h3 class="sg-h3">Suggest a reply</h3>
+              <p>A LoRA fine-tuned LLM writes a recommended reply, conditioned on the predicted strategy and its clinical definition, the virtual tokens, and the recent dialogue. The counselor stays in charge and decides whether to use it.</p>
+            </div>
+
+            <div class="sg-walk__nav">
+              <button class="sg-btn" id="wPrev" type="button" disabled>Previous</button>
+              <button class="sg-btn sg-btn--primary" id="wNext" type="button">Next step</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- End paper abstract -->
+  </section>
 
+  <!-- ===== Graph ===== -->
+  <section class="sg-sec" id="graph" aria-labelledby="h-graph">
+    <div class="sg-wrap">
+      <h2 class="sg-h2" id="h-graph">The heterogeneous graph</h2>
+      <p class="sg-lede">Each session becomes one graph with three layers. A Heterogeneous Graph Transformer learns a separate attention for each relation type, so it can tell a temporal link between messages from a link to a risk factor.</p>
 
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
+      <figure class="sg-fig">
+        <div class="sg-fig__scroll">
+          <svg class="sg-graph" viewBox="0 0 760 470" role="img" aria-labelledby="gTitle gDesc">
+            <title id="gTitle">The three layers of the SAGE graph</title>
+            <desc id="gDesc">The conversational layer holds the session node with gender, age and a distress category. The utterance layer holds alternating help-seeker and counselor messages linked in time order, each linked up to the session. The psychological layer holds lexicon categories such as loneliness, hopelessness and suicidal ideation, linked from help-seeker messages.</desc>
+            <defs>
+              <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" class="g-arrowhead"/>
+              </marker>
+            </defs>
+
+            <!-- bands -->
+            <rect class="g-band" x="10" y="14" width="740" height="128" rx="10"/>
+            <rect class="g-band" x="10" y="172" width="740" height="128" rx="10"/>
+            <rect class="g-band" x="10" y="330" width="740" height="128" rx="10"/>
+            <text class="g-layer" x="28" y="40">Conversational layer</text>
+            <text class="g-layer" x="28" y="198">Utterance layer</text>
+            <text class="g-layer" x="28" y="356">Psychological layer</text>
+
+            <!-- hierarchical edges: utterances to session -->
+            <g class="g-edge g-edge--hier">
+              <line x1="150" y1="232" x2="372" y2="104"/>
+              <line x1="270" y1="232" x2="376" y2="104"/>
+              <line x1="390" y1="232" x2="380" y2="104"/>
+              <line x1="510" y1="232" x2="384" y2="104"/>
+              <line x1="630" y1="232" x2="388" y2="104"/>
+            </g>
+
+            <!-- lexicon edges -->
+            <g class="g-edge g-edge--lex">
+              <line x1="150" y1="262" x2="190" y2="392"/>
+              <line x1="390" y1="262" x2="200" y2="392"/>
+              <line x1="390" y1="262" x2="400" y2="392"/>
+              <line x1="630" y1="262" x2="612" y2="392"/>
+            </g>
+
+            <!-- conversational layer edges -->
+            <g class="g-edge">
+              <line x1="334" y1="82" x2="262" y2="66"/>
+              <line x1="334" y1="96" x2="262" y2="114"/>
+              <line x1="426" y1="88" x2="500" y2="88"/>
+            </g>
+            <rect class="g-node g-node--session" x="334" y="72" width="92" height="32" rx="6"/>
+            <text class="g-label g-label--inv" x="380" y="93">Session</text>
+            <rect class="g-node g-node--attr" x="192" y="50" width="70" height="32" rx="6"/>
+            <text class="g-label" x="227" y="71">Gender</text>
+            <rect class="g-node g-node--attr" x="200" y="98" width="62" height="32" rx="6"/>
+            <text class="g-label" x="231" y="119">Age</text>
+            <rect class="g-node g-node--attr" x="500" y="72" width="140" height="32" rx="6"/>
+            <text class="g-label" x="570" y="93">Distress category</text>
+
+            <!-- utterances + temporal edges -->
+            <g class="g-edge g-edge--time">
+              <line x1="166" y1="247" x2="252" y2="247" marker-end="url(#arr)"/>
+              <line x1="286" y1="247" x2="372" y2="247" marker-end="url(#arr)"/>
+              <line x1="406" y1="247" x2="492" y2="247" marker-end="url(#arr)"/>
+              <line x1="526" y1="247" x2="612" y2="247" marker-end="url(#arr)"/>
+            </g>
+            <circle class="g-node g-node--seeker" cx="150" cy="247" r="15"/>
+            <circle class="g-node g-node--counselor" cx="270" cy="247" r="15"/>
+            <circle class="g-node g-node--seeker" cx="390" cy="247" r="15"/>
+            <circle class="g-node g-node--counselor" cx="510" cy="247" r="15"/>
+            <circle class="g-node g-node--seeker" cx="630" cy="247" r="15"/>
+
+            <!-- psychological layer -->
+            <rect class="g-node g-node--cat" x="130" y="392" width="120" height="32" rx="6"/>
+            <text class="g-label" x="190" y="413">Loneliness</text>
+            <rect class="g-node g-node--cat" x="334" y="392" width="132" height="32" rx="6"/>
+            <text class="g-label" x="400" y="413">Hopelessness</text>
+            <rect class="g-node g-node--cat" x="536" y="392" width="152" height="32" rx="6"/>
+            <text class="g-label" x="612" y="413">Suicidal ideation</text>
+          </svg>
+        </div>
+        <figcaption>
+          <ul class="sg-key">
+            <li><span class="k k--seeker"></span>Help-seeker message</li>
+            <li><span class="k k--counselor"></span>Counselor message</li>
+            <li><span class="k-line"></span>Temporal edge</li>
+            <li><span class="k-line k-line--dash"></span>Hierarchical edge</li>
+            <li><span class="k-line k-line--lex"></span>Lexicon edge</li>
+          </ul>
+          <p class="sg-only-mobile">Scroll sideways to see the full diagram.</p>
+          <p>Across the dataset the graph holds 5,325 utterances, 150 sessions, 20 lexicon categories and 29 distress categories.</p>
+        </figcaption>
+      </figure>
+
+      <div class="sg-layers">
+        <div>
+          <h3 class="sg-h4">Conversational</h3>
+          <p>Session-wide context: the session itself, demographic metadata and its distress categories.</p>
+        </div>
+        <div>
+          <h3 class="sg-h4">Utterance</h3>
+          <p>The dialogue: every help-seeker and counselor message, linked in the order it was sent.</p>
+        </div>
+        <div>
+          <h3 class="sg-h4">Psychological</h3>
+          <p>Clinical grounding: lexicon categories that anchor help-seeker messages to known risk factors.</p>
+        </div>
       </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
     </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
+  </section>
 
+  <!-- ===== Results ===== -->
+  <section class="sg-sec sg-sec--tint" id="results" aria-labelledby="h-results">
+    <div class="sg-wrap">
+      <h2 class="sg-h2" id="h-results">What a psychologist preferred</h2>
+      <p class="sg-lede">A licensed psychologist compared SAGE with a fine-tuned baseline in a blind pairwise test of 307 responses. SAGE was preferred in 50.2% of pairs and the baseline in 34.5% (p&nbsp;&asymp;&nbsp;0.006). The gap is widest early in the session, when there is little to go on.</p>
 
+      <figure class="sg-chart" id="sgChart">
+        <ul class="sg-chart__legend" aria-hidden="true">
+          <li><span class="sw sw--sage"></span>SAGE preferred</li>
+          <li><span class="sw sw--tie"></span>Tie</li>
+          <li><span class="sw sw--base"></span>Baseline preferred</li>
+        </ul>
+        <div class="sg-chart__rows" id="sgRows"></div>
+        <div class="sg-chart__axis" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></div>
+        <div class="sg-tip" id="sgTip" role="status" hidden></div>
+        <figcaption>Share of the 307 pairs, overall and by point in the session. Help-seeker messages early in a session carry the least context.</figcaption>
+        <details class="sg-table">
+          <summary>Show as a table</summary>
+          <table>
+            <thead><tr><th scope="col">Point in session</th><th scope="col">SAGE preferred</th><th scope="col">Tie</th><th scope="col">Baseline preferred</th></tr></thead>
+            <tbody id="sgTbody"></tbody>
+          </table>
+        </details>
+      </figure>
 
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
+      <p class="sg-small-print">When SAGE was preferred, the psychologist most often cited empathy (97.4%), contextual relevance (77.9%), fluency (63.6%) and safety (37.0%). Intra-rater agreement was &kappa;&nbsp;=&nbsp;0.91. On strategy prediction, the full graph reaches F1 0.77 and MCC 0.59, against MCC 0.12 for a text-only model.</p>
+    </div>
+  </section>
+
+  <!-- ===== Use case ===== -->
+  <section class="sg-sec" id="case" aria-labelledby="h-case">
+    <div class="sg-wrap">
+      <h2 class="sg-h2" id="h-case">A case where it matters</h2>
+      <div class="sg-prose">
+        <p>The help-seeker describes exhaustion and a lack of energy, saying that every day feels like a &ldquo;war&rdquo;. He shares the pain of a broken heart after being rejected. His last message:</p>
+        <blockquote class="sg-quote">&ldquo;I ask myself every day what I&rsquo;ve done in my life to deserve this. I take blow after blow, one bad thing after another. I have no strength left; sometimes I just want anything to end.&rdquo;</blockquote>
+      </div>
+
+      <div class="sg-compare">
+        <div class="sg-compare__col">
+          <h3 class="sg-h4">Baseline reply</h3>
+          <p class="sg-compare__reply">&ldquo;Dear, I hear how broken your heart is&hellip; how much you are suffering&hellip; I hear how lost you feel&hellip; I am worried about you&hellip;&rdquo;</p>
+          <p class="sg-compare__why">Offers empathy, but does not act on the critical distress signal or assess immediate risk.</p>
+        </div>
+        <div class="sg-compare__col sg-compare__col--sage">
+          <h3 class="sg-h4">SAGE reply</h3>
+          <p class="sg-compare__reply">&ldquo;Dear, I hear the despair&hellip; the pain&hellip; the urge to stop&hellip; I am worried about you&hellip; Do you have an intention to harm yourself?&rdquo;</p>
+          <p class="sg-compare__why">Follows clinical safety protocol by asking directly about risk.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contributions ===== -->
+  <section class="sg-sec" id="contributions" aria-labelledby="h-contrib">
+    <div class="sg-wrap sg-prose">
+      <h2 class="sg-h2" id="h-contrib">Contributions</h2>
+      <ul class="sg-contrib">
+        <li><strong>Graph-structured clinical knowledge for crisis-support LLMs.</strong> A heterogeneous graph links the dialogue to session context and to theory-driven risk factors, and conditions generation through soft prompts.</li>
+        <li><strong>Proactive risk assessment under sparse context.</strong> The graph helps most at the start of a session, where risk is hardest to judge and LLMs have the least to work with.</li>
+        <li><strong>A foundation for real-world deployment.</strong> SAGE is designed as decision support that keeps the counselor in control, and sets up broader human evaluation.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Citation ===== -->
+  <section class="sg-sec sg-sec--tint" id="BibTeX" aria-labelledby="h-cite">
+    <div class="sg-wrap">
+      <div class="sg-cite__head">
+        <h2 class="sg-h2" id="h-cite">Citation</h2>
+        <button class="copy-bibtex-btn sg-btn" onclick="copyBibTeX()" type="button">
+          <i class="fas fa-copy" aria-hidden="true"></i><span class="copy-text">Copy</span>
         </button>
       </div>
-      <pre id="bibtex-code"><code>@inproceedings{aharon2026sage,
+      <pre id="bibtex-code" class="sg-bib"><code>@inproceedings{aharon2026sage,
   title     = {SAGE: A Strategy-Aware Graph-Enhanced Generation Framework For Online Counseling},
   author    = {Aharon, Eliya Naomi and Grimland, Meytal and Segal, Avi and Ben Dayan, Loona and Shenfeld, Inbar and Levi Belz, Yossi and Gal, Kobi},
   booktitle = {Proceedings of the 34th ACM Conference on User Modeling, Adaptation and Personalization (UMAP '26)},
@@ -459,25 +852,101 @@
   doi       = {10.1145/3774935.3806785}
 }</code></pre>
     </div>
-</section>
-<!--End BibTex citation -->
+  </section>
+  </main>
 
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-          </p>
-
-        </div>
-      </div>
+  <footer class="sg-footer">
+    <div class="sg-wrap">
+      <p>This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>, adapted from the <a href="https://nerfies.github.io" target="_blank" rel="noopener">Nerfies</a> project page.</p>
     </div>
-  </div>
-</footer>
+  </footer>
+
+  <script>
+  (function () {
+    /* ---------- walkthrough ---------- */
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.sg-steps [role="tab"]'));
+    var panels = document.querySelectorAll('.sg-panel');
+    var rows = document.querySelectorAll('.sg-state > div');
+    var prev = document.getElementById('wPrev');
+    var next = document.getElementById('wNext');
+    var walk = document.getElementById('sgWalk');
+    var cur = 0;
+    function go(i, focusTab) {
+      cur = Math.max(0, Math.min(tabs.length - 1, i));
+      tabs.forEach(function (t, k) {
+        t.setAttribute('aria-selected', k === cur ? 'true' : 'false');
+        t.tabIndex = k === cur ? 0 : -1;
+        t.parentNode.classList.toggle('is-done', k < cur);
+      });
+      panels.forEach(function (p) { p.hidden = Number(p.dataset.step) !== cur; });
+      rows.forEach(function (r) { r.classList.toggle('is-on', cur >= Number(r.dataset.from)); });
+      walk.classList.toggle('show-hl', cur >= 1);
+      prev.disabled = cur === 0;
+      next.textContent = cur === tabs.length - 1 ? 'Start over' : 'Next step';
+      if (focusTab) tabs[cur].focus();
+    }
+    tabs.forEach(function (t, k) {
+      t.addEventListener('click', function () { go(k); });
+      t.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1, true); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1, true); }
+      });
+    });
+    prev.addEventListener('click', function () { go(cur - 1); });
+    next.addEventListener('click', function () { go(cur === tabs.length - 1 ? 0 : cur + 1); });
+    go(0);
+
+    /* ---------- preference chart ---------- */
+    var data = [
+      { label: 'Overall', long: 'All 307 pairs', s: 50.2, t: 15.3, b: 34.5, all: true },
+      { label: '0–20%', long: 'First 20% of the session', s: 68.4, t: 7.0, b: 24.6 },
+      { label: '20–40%', long: '20–40% into the session', s: 55.2, t: 6.0, b: 38.8 },
+      { label: '40–60%', long: '40–60% into the session', s: 50.8, t: 14.8, b: 34.4 },
+      { label: '60–80%', long: '60–80% into the session', s: 34.9, t: 25.4, b: 39.7 },
+      { label: '80–100%', long: 'Last 20% of the session', s: 42.4, t: 23.7, b: 33.9 }
+    ];
+    var host = document.getElementById('sgRows');
+    var tip = document.getElementById('sgTip');
+    var chart = document.getElementById('sgChart');
+    var tbody = document.getElementById('sgTbody');
+    function pct(v) { return v.toFixed(1) + '%'; }
+    data.forEach(function (d) {
+      var row = document.createElement('div');
+      row.className = 'sg-row' + (d.all ? ' sg-row--all' : '');
+      row.tabIndex = 0;
+      row.setAttribute('aria-label', d.long + ': SAGE preferred ' + pct(d.s) + ', tie ' + pct(d.t) + ', baseline preferred ' + pct(d.b));
+      row.innerHTML =
+        '<span class="sg-row__label">' + d.label + '</span>' +
+        '<span class="sg-bar">' +
+          '<span class="seg seg--sage" style="width:' + d.s + '%"><b>' + pct(d.s) + '</b></span>' +
+          '<span class="seg seg--tie" style="width:' + d.t + '%"></span>' +
+          '<span class="seg seg--base" style="width:' + d.b + '%"><b>' + pct(d.b) + '</b></span>' +
+        '</span>';
+      function show(x, y) {
+        tip.innerHTML = '<strong>' + d.long + '</strong>' +
+          '<span><i class="sw sw--sage"></i>SAGE preferred<em>' + pct(d.s) + '</em></span>' +
+          '<span><i class="sw sw--tie"></i>Tie<em>' + pct(d.t) + '</em></span>' +
+          '<span><i class="sw sw--base"></i>Baseline preferred<em>' + pct(d.b) + '</em></span>';
+        tip.hidden = false;
+        var cb = chart.getBoundingClientRect();
+        var left = Math.min(Math.max(x - cb.left + 14, 0), cb.width - tip.offsetWidth);
+        tip.style.left = left + 'px';
+        tip.style.top = (y - cb.top + 16) + 'px';
+      }
+      row.addEventListener('mousemove', function (e) { show(e.clientX, e.clientY); });
+      row.addEventListener('mouseleave', function () { tip.hidden = true; });
+      row.addEventListener('focus', function () {
+        var r = row.getBoundingClientRect(); show(r.left + r.width * 0.4, r.top + r.height / 2);
+      });
+      row.addEventListener('blur', function () { tip.hidden = true; });
+      host.appendChild(row);
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<th scope="row">' + d.long + '</th><td>' + pct(d.s) + '</td><td>' + pct(d.t) + '</td><td>' + pct(d.b) + '</td>';
+      tbody.appendChild(tr);
+    });
+  })();
+  </script>
+
 
 <!-- Statcounter tracking code -->
   
