@@ -323,7 +323,7 @@
     .c-cross { stroke: var(--sg-rule); stroke-width: 1; }
     .c-hit { fill: transparent; cursor: default; outline: none; }
     .c-hit:focus-visible { stroke: var(--sg-sage); stroke-width: 2; }
-    .sg-chart figcaption { font-size: 0.9rem; color: var(--sg-muted); margin-top: 1rem; }
+    .sg-chart figcaption { font-size: 0.95rem; line-height: 1.6; color: var(--sg-ink); margin-top: 1rem; max-width: 52rem; }
     .sg-tip {
       position: absolute; z-index: 5; pointer-events: none; min-width: 13rem;
       background: #fff; border: 1px solid var(--sg-rule); border-radius: 8px;
@@ -783,7 +783,7 @@
         </ul>
         <div class="sg-lines" id="sgLines" role="img" aria-label="Line chart: share of pairs where the psychologist preferred SAGE or the baseline, at 20, 40, 60, 80 and 100 percent of the session. SAGE starts at 68.4% and declines to 34.9% at 80%, ending at 42.4%. The baseline ranges from 24.6% to 39.7%. Full values are in the table below."></div>
         <div class="sg-tip" id="sgTip" role="status" hidden></div>
-        <figcaption>Share of pairs at each point in the session. The gap between the lines is the share of ties. Across all 307 pairs, SAGE was preferred in 50.2%, the baseline in 34.5%, with 15.3% ties (p&nbsp;&asymp;&nbsp;0.006).</figcaption>
+        <figcaption>The chart shows how often each model was preferred, by how far into the session the message was written; the rest are ties. SAGE&rsquo;s lead is largest at the start of the session (68.4% vs. 24.6%), when there is the least context to go on. Across all 307 pairs, SAGE was preferred in 50.2%, the baseline in 34.5%, with 15.3% ties (p&nbsp;&asymp;&nbsp;0.006).</figcaption>
         <details class="sg-table">
           <summary>Show as a table</summary>
           <table>
