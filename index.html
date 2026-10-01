@@ -226,7 +226,7 @@
     .sg-steps li.is-done button { color: var(--sg-ink); }
     .sg-steps button[aria-selected="true"] { color: var(--sg-sage); border-bottom-color: var(--sg-sage); font-weight: 600; }
     .sg-steps button:hover { color: var(--sg-ink); }
-    .sg-steps button:focus-visible, .sg-walk__text:focus-visible, .sg-row:focus-visible, .sg-table summary:focus-visible {
+    .sg-steps button:focus-visible, .sg-walk__text:focus-visible, .sg-table summary:focus-visible {
       outline: 2px solid var(--sg-sage); outline-offset: 2px;
     }
     .sg-walk__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.5rem; align-items: start; }
@@ -301,27 +301,28 @@
 
     /* chart */
     .sg-chart { position: relative; margin: 2rem 0 1.5rem; background: #fff; border: 1px solid var(--sg-rule); border-radius: 10px; padding: 1.5rem; }
-    .sg-chart__legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; list-style: none; padding: 0; margin: 0 0 1.25rem; font-size: 0.9rem; }
-    .sg-chart__legend li { display: flex; align-items: center; gap: 0.45rem; }
-    .sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; flex: 0 0 auto; }
-    .sw--sage { background: var(--sg-c-sage); }
-    .sw--tie { background: var(--sg-c-tie); }
-    .sw--base { background: var(--sg-c-base); }
-    .sg-chart__rows { display: grid; gap: 0.55rem; }
-    .sg-row { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; align-items: center; padding: 0.2rem 0; border-radius: 4px; }
-    .sg-row--all { padding-bottom: 0.8rem; margin-bottom: 0.4rem; border-bottom: 1px solid var(--sg-rule); }
-    .sg-row--all .sg-row__label { font-weight: 600; color: var(--sg-ink); }
-    .sg-row__label { font-size: 0.9rem; color: var(--sg-muted); font-variant-numeric: tabular-nums; }
-    .sg-bar { display: flex; gap: 2px; height: 24px; }
-    .seg { display: flex; align-items: center; min-width: 0; }
-    .seg:first-child { border-radius: 4px 0 0 4px; }
-    .seg:last-child { border-radius: 0 4px 4px 0; justify-content: flex-end; }
-    .seg--sage { background: var(--sg-c-sage); }
-    .seg--tie { background: var(--sg-c-tie); }
-    .seg--base { background: var(--sg-c-base); }
-    .seg b { color: #fff; font-size: 0.8rem; font-weight: 600; padding: 0 0.5rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
-    .sg-row:hover .sg-bar, .sg-row:focus-visible .sg-bar { filter: brightness(0.95); }
-    .sg-chart__axis { display: flex; justify-content: space-between; margin: 0.6rem 0 0 8.5rem; font-size: 0.8rem; color: var(--sg-muted); }
+    .sg-chart__legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; list-style: none; padding: 0; margin: 0 0 0.75rem; font-size: 0.9rem; }
+    .sg-chart__legend li { display: flex; align-items: center; gap: 0.5rem; }
+    .ln { display: inline-block; width: 20px; height: 0; border-top: 2.5px solid; flex: 0 0 auto; }
+    .ln--sage { border-color: var(--sg-c-sage); }
+    .ln--base { border-color: var(--sg-c-base); }
+    .ln--tie { border-top: 2.5px dotted var(--sg-muted); }
+    .sg-lines { position: relative; width: 100%; }
+    .sg-lines svg { display: block; overflow: visible; font-family: 'Instrument Sans', system-ui, sans-serif; }
+    .c-grid { stroke: #E6EAE7; stroke-width: 1; }
+    .c-ax { font-size: 12.5px; fill: var(--sg-muted); font-variant-numeric: tabular-nums; }
+    .c-axt { font-size: 13px; font-weight: 600; fill: var(--sg-ink); }
+    .c-line { fill: none; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+    .c-line--s { stroke: var(--sg-c-sage); }
+    .c-line--b { stroke: var(--sg-c-base); }
+    .c-dot { stroke: #fff; stroke-width: 2; }
+    .c-dot--s { fill: var(--sg-c-sage); }
+    .c-dot--b { fill: var(--sg-c-base); }
+    .c-val { font-size: 12.5px; font-weight: 500; fill: var(--sg-ink); font-variant-numeric: tabular-nums; }
+    .c-val--sm { font-size: 11px; }
+    .c-cross { stroke: var(--sg-rule); stroke-width: 1; }
+    .c-hit { fill: transparent; cursor: default; outline: none; }
+    .c-hit:focus-visible { stroke: var(--sg-sage); stroke-width: 2; }
     .sg-chart figcaption { font-size: 0.9rem; color: var(--sg-muted); margin-top: 1rem; }
     .sg-tip {
       position: absolute; z-index: 5; pointer-events: none; min-width: 13rem;
@@ -329,7 +330,8 @@
       box-shadow: 0 6px 20px rgba(24, 33, 30, 0.12); padding: 0.65rem 0.8rem; font-size: 0.85rem;
     }
     .sg-tip strong { display: block; margin-bottom: 0.35rem; }
-    .sg-tip span { display: flex; align-items: center; gap: 0.45rem; line-height: 1.6; }
+    .sg-tip span { display: flex; align-items: center; gap: 0.5rem; line-height: 1.6; }
+    .sg-tip .ln { width: 14px; }
     .sg-tip em { margin-left: auto; font-style: normal; font-weight: 600; padding-left: 1rem; font-variant-numeric: tabular-nums; }
     .sg-table { margin-top: 1rem; font-size: 0.9rem; }
     .sg-table summary { cursor: pointer; color: var(--sg-sage); }
@@ -375,10 +377,7 @@
       .sg-walk__grid, .sg-compare, .sg-layers { grid-template-columns: 1fr; gap: 1.25rem; }
       .sg-lex { grid-template-columns: 1fr; }
       .sg-state > div { grid-template-columns: 7rem 1fr; }
-      .sg-row { grid-template-columns: 4.5rem 1fr; gap: 0.6rem; }
       .sg-chart { padding: 1rem; }
-      .sg-chart__axis { margin-left: 5.1rem; }
-      .seg b { font-size: 0.72rem; padding: 0 0.3rem; }
       .sg-quote { font-size: 1.15rem; }
       .sg-walk__nav .sg-btn { flex: 1 1 auto; justify-content: center; }
     }
@@ -779,18 +778,16 @@
 
       <figure class="sg-chart" id="sgChart">
         <ul class="sg-chart__legend" aria-hidden="true">
-          <li><span class="sw sw--sage"></span>SAGE preferred</li>
-          <li><span class="sw sw--tie"></span>Tie</li>
-          <li><span class="sw sw--base"></span>Baseline preferred</li>
+          <li><span class="ln ln--sage"></span>SAGE preferred</li>
+          <li><span class="ln ln--base"></span>Baseline preferred</li>
         </ul>
-        <div class="sg-chart__rows" id="sgRows"></div>
-        <div class="sg-chart__axis" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></div>
+        <div class="sg-lines" id="sgLines" role="img" aria-label="Line chart: share of pairs where the psychologist preferred SAGE or the baseline, at 20, 40, 60, 80 and 100 percent of the session. SAGE starts at 68.4% and declines to 34.9% at 80%, ending at 42.4%. The baseline ranges from 24.6% to 39.7%. Full values are in the table below."></div>
         <div class="sg-tip" id="sgTip" role="status" hidden></div>
-        <figcaption>Share of the 307 pairs, overall and by point in the session. Help-seeker messages early in a session carry the least context.</figcaption>
+        <figcaption>Share of pairs at each point in the session. The gap between the lines is the share of ties. Across all 307 pairs, SAGE was preferred in 50.2%, the baseline in 34.5%, with 15.3% ties (p&nbsp;&asymp;&nbsp;0.006).</figcaption>
         <details class="sg-table">
           <summary>Show as a table</summary>
           <table>
-            <thead><tr><th scope="col">Point in session</th><th scope="col">SAGE preferred</th><th scope="col">Tie</th><th scope="col">Baseline preferred</th></tr></thead>
+            <thead><tr><th scope="col">Session progress</th><th scope="col">SAGE preferred</th><th scope="col">Tie</th><th scope="col">Baseline preferred</th></tr></thead>
             <tbody id="sgTbody"></tbody>
           </table>
         </details>
@@ -900,54 +897,95 @@
     next.addEventListener('click', function () { go(cur === tabs.length - 1 ? 0 : cur + 1); });
     go(0);
 
-    /* ---------- preference chart ---------- */
-    var data = [
-      { label: 'Overall', long: 'All 307 pairs', s: 50.2, t: 15.3, b: 34.5, all: true },
-      { label: '0–20%', long: 'First 20% of the session', s: 68.4, t: 7.0, b: 24.6 },
-      { label: '20–40%', long: '20–40% into the session', s: 55.2, t: 6.0, b: 38.8 },
-      { label: '40–60%', long: '40–60% into the session', s: 50.8, t: 14.8, b: 34.4 },
-      { label: '60–80%', long: '60–80% into the session', s: 34.9, t: 25.4, b: 39.7 },
-      { label: '80–100%', long: 'Last 20% of the session', s: 42.4, t: 23.7, b: 33.9 }
+    /* ---------- preference line chart ---------- */
+    var pts = [
+      { x: 20, s: 68.4, t: 7.0, b: 24.6 },
+      { x: 40, s: 55.2, t: 6.0, b: 38.8 },
+      { x: 60, s: 50.8, t: 14.8, b: 34.4 },
+      { x: 80, s: 34.9, t: 25.4, b: 39.7 },
+      { x: 100, s: 42.4, t: 23.7, b: 33.9 }
     ];
-    var host = document.getElementById('sgRows');
+    var host = document.getElementById('sgLines');
     var tip = document.getElementById('sgTip');
     var chart = document.getElementById('sgChart');
     var tbody = document.getElementById('sgTbody');
+    var NS = 'http://www.w3.org/2000/svg';
     function pct(v) { return v.toFixed(1) + '%'; }
-    data.forEach(function (d) {
-      var row = document.createElement('div');
-      row.className = 'sg-row' + (d.all ? ' sg-row--all' : '');
-      row.tabIndex = 0;
-      row.setAttribute('aria-label', d.long + ': SAGE preferred ' + pct(d.s) + ', tie ' + pct(d.t) + ', baseline preferred ' + pct(d.b));
-      row.innerHTML =
-        '<span class="sg-row__label">' + d.label + '</span>' +
-        '<span class="sg-bar">' +
-          '<span class="seg seg--sage" style="width:' + d.s + '%"><b>' + pct(d.s) + '</b></span>' +
-          '<span class="seg seg--tie" style="width:' + d.t + '%"></span>' +
-          '<span class="seg seg--base" style="width:' + d.b + '%"><b>' + pct(d.b) + '</b></span>' +
-        '</span>';
-      function show(x, y) {
-        tip.innerHTML = '<strong>' + d.long + '</strong>' +
-          '<span><i class="sw sw--sage"></i>SAGE preferred<em>' + pct(d.s) + '</em></span>' +
-          '<span><i class="sw sw--tie"></i>Tie<em>' + pct(d.t) + '</em></span>' +
-          '<span><i class="sw sw--base"></i>Baseline preferred<em>' + pct(d.b) + '</em></span>';
-        tip.hidden = false;
-        var cb = chart.getBoundingClientRect();
-        var left = Math.min(Math.max(x - cb.left + 14, 0), cb.width - tip.offsetWidth);
-        tip.style.left = left + 'px';
-        tip.style.top = (y - cb.top + 16) + 'px';
-      }
-      row.addEventListener('mousemove', function (e) { show(e.clientX, e.clientY); });
-      row.addEventListener('mouseleave', function () { tip.hidden = true; });
-      row.addEventListener('focus', function () {
-        var r = row.getBoundingClientRect(); show(r.left + r.width * 0.4, r.top + r.height / 2);
-      });
-      row.addEventListener('blur', function () { tip.hidden = true; });
-      host.appendChild(row);
+    function el(name, attrs, text) {
+      var n = document.createElementNS(NS, name);
+      for (var k in attrs) n.setAttribute(k, attrs[k]);
+      if (text != null) n.textContent = text;
+      return n;
+    }
+    [{ x: 'All pairs', s: 50.2, t: 15.3, b: 34.5 }].concat(pts).forEach(function (d) {
       var tr = document.createElement('tr');
-      tr.innerHTML = '<th scope="row">' + d.long + '</th><td>' + pct(d.s) + '</td><td>' + pct(d.t) + '</td><td>' + pct(d.b) + '</td>';
+      tr.innerHTML = '<th scope="row">' + (typeof d.x === 'number' ? d.x + '%' : d.x) + '</th><td>' + pct(d.s) + '</td><td>' + pct(d.t) + '</td><td>' + pct(d.b) + '</td>';
       tbody.appendChild(tr);
     });
+    function draw() {
+      var W = host.clientWidth; if (!W) return;
+      var narrow = W < 560;
+      var H = narrow ? 260 : 340;
+      var m = { l: 40, r: narrow ? 22 : 14, t: 22, b: 54 };
+      var iw = W - m.l - m.r, ih = H - m.t - m.b;
+      var X = function (i) { return m.l + iw * i / (pts.length - 1); };
+      var Y = function (v) { return m.t + ih * (1 - v / 80); };
+      host.innerHTML = '';
+      var svg = el('svg', { width: W, height: H, viewBox: '0 0 ' + W + ' ' + H, 'aria-hidden': 'true' });
+      [0, 20, 40, 60, 80].forEach(function (v) {
+        svg.appendChild(el('line', { x1: m.l, x2: W - m.r, y1: Y(v), y2: Y(v), 'class': 'c-grid' }));
+        svg.appendChild(el('text', { x: m.l - 8, y: Y(v) + 4, 'class': 'c-ax', 'text-anchor': 'end' }, v + '%'));
+      });
+      pts.forEach(function (d, i) {
+        svg.appendChild(el('text', { x: X(i), y: H - m.b + 22, 'class': 'c-ax', 'text-anchor': i === 0 ? 'start' : (i === pts.length - 1 ? 'end' : 'middle') }, d.x + '%'));
+      });
+      svg.appendChild(el('text', { x: m.l + iw / 2, y: H - 8, 'class': 'c-axt', 'text-anchor': 'middle' }, 'Session progress'));
+      var cross = el('line', { x1: 0, x2: 0, y1: m.t, y2: m.t + ih, 'class': 'c-cross', visibility: 'hidden' });
+      svg.appendChild(cross);
+      ['s', 'b'].forEach(function (k) {
+        svg.appendChild(el('polyline', { points: pts.map(function (d, i) { return X(i) + ',' + Y(d[k]); }).join(' '), 'class': 'c-line c-line--' + k }));
+      });
+      pts.forEach(function (d, i) {
+        var last = i === pts.length - 1;
+        var anc = i === 0 ? 'start' : (last && !narrow ? 'end' : 'middle');
+        var dx = i === 0 ? 6 : (last && !narrow ? -6 : 0);
+        var sUp = d.s >= d.b;
+        svg.appendChild(el('circle', { cx: X(i), cy: Y(d.s), r: 5, 'class': 'c-dot c-dot--s' }));
+        svg.appendChild(el('circle', { cx: X(i), cy: Y(d.b), r: 5, 'class': 'c-dot c-dot--b' }));
+        svg.appendChild(el('text', { x: X(i) + dx, y: Y(d.s) + (sUp ? -12 : 21), 'class': 'c-val' + (narrow ? ' c-val--sm' : ''), 'text-anchor': anc }, pct(d.s)));
+        svg.appendChild(el('text', { x: X(i) + dx, y: Y(d.b) + (sUp ? 21 : -12), 'class': 'c-val' + (narrow ? ' c-val--sm' : ''), 'text-anchor': anc }, pct(d.b)));
+      });
+      pts.forEach(function (d, i) {
+        var half = iw / (pts.length - 1) / 2;
+        var x0 = Math.max(m.l - 10, X(i) - half), x1 = Math.min(W, X(i) + half);
+        var hit = el('rect', { x: x0, y: m.t, width: x1 - x0, height: ih, 'class': 'c-hit', tabindex: 0,
+          'aria-label': d.x + '% of the session: SAGE preferred ' + pct(d.s) + ', tie ' + pct(d.t) + ', baseline preferred ' + pct(d.b) });
+        function show() {
+          cross.setAttribute('x1', X(i)); cross.setAttribute('x2', X(i)); cross.setAttribute('visibility', 'visible');
+          tip.innerHTML = '<strong>' + d.x + '% of the session</strong>' +
+            '<span><i class="ln ln--sage"></i>SAGE preferred<em>' + pct(d.s) + '</em></span>' +
+            '<span><i class="ln ln--tie"></i>Tie<em>' + pct(d.t) + '</em></span>' +
+            '<span><i class="ln ln--base"></i>Baseline preferred<em>' + pct(d.b) + '</em></span>';
+          tip.hidden = false;
+          var hb = host.getBoundingClientRect(), cb = chart.getBoundingClientRect();
+          var left = hb.left - cb.left + X(i) + 14;
+          if (left + tip.offsetWidth > cb.width - 8) left = hb.left - cb.left + X(i) - tip.offsetWidth - 14;
+          tip.style.left = Math.max(8, left) + 'px';
+          tip.style.top = (hb.top - cb.top + m.t + 8) + 'px';
+        }
+        function hide() { cross.setAttribute('visibility', 'hidden'); tip.hidden = true; }
+        hit.addEventListener('mouseenter', show);
+        hit.addEventListener('mouseleave', hide);
+        hit.addEventListener('focus', show);
+        hit.addEventListener('blur', hide);
+        svg.appendChild(hit);
+      });
+      host.appendChild(svg);
+      host.style.height = H + 'px';
+    }
+    draw();
+    var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(draw, 120); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
   })();
   </script>
 
