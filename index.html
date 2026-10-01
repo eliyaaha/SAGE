@@ -118,6 +118,14 @@
       line-height: 1.22;
       letter-spacing: -0.005em;
     }
+    /* title lockup: subtitle beside SAGE on wide screens */
+    .sg-br { display: none; }
+    @media (min-width: 1000px) {
+      .sg-title { display: flex; align-items: center; gap: 0 1.75rem; }
+      .sg-title__name { flex: 0 0 auto; }
+      .sg-title__sub { margin-top: 0; max-width: none; font-size: 1.9rem; line-height: 1.15; padding-left: 1.75rem; border-left: 1px solid var(--sg-rule); white-space: nowrap; }
+      .sg-br { display: inline; }
+    }
     .sg-visually-hidden {
       position: absolute; width: 1px; height: 1px; overflow: hidden;
       clip: rect(0 0 0 0); white-space: nowrap;
@@ -521,7 +529,7 @@
     <div class="sg-hero__inner">
       <h1 class="sg-title">
         <span class="sg-title__name">SAGE<span class="sg-visually-hidden">:</span></span>
-        <span class="sg-title__sub">A Strategy-Aware Graph-Enhanced Generation Framework For Online Counseling</span>
+        <span class="sg-title__sub">A Strategy-Aware Graph-Enhanced Generation <br class="sg-br">Framework For Online Counseling</span>
       </h1>
 
       <p class="sg-authors">
